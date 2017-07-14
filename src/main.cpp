@@ -41,7 +41,7 @@ CBigNum bnProofOfStakeLimit(~uint256(0) >> 20);
 CBigNum bnProofOfWorkLimitTestNet(~uint256(0) >> 16);
 
 unsigned int nTargetSpacing = 1 * 60; // 1 minute
-unsigned int nStakeMinAge = 2 * 60 * 60;
+unsigned int nStakeMinAge = 5 * 60 * 60;
 unsigned int nStakeMaxAge = -1; // unlimited
 unsigned int nModifierInterval = 10 * 60; // time to elapse before new modifier is computed
 
@@ -1160,7 +1160,7 @@ static unsigned int GetNextTargetRequiredV2(const CBlockIndex* pindexLast, bool 
 
 unsigned int GetNextTargetRequired(const CBlockIndex* pindexLast, bool fProofOfStake)
 {
-    if (pindexLast->nHeight < 4096)
+    if (pindexLast->nHeight < 100000)
         return GetNextTargetRequiredV1(pindexLast, fProofOfStake);
     else
         return GetNextTargetRequiredV2(pindexLast, fProofOfStake);
@@ -2543,9 +2543,9 @@ bool LoadBlockIndex(bool fAllowNew)
         if (!fAllowNew)
             return false;
 
-        const char* pszTimestamp = "coindesk.com Dec 10, 2016 Time is Money as Alternative Banking Moves to the Blockchain";
+        const char* pszTimestamp = "girls";
         CTransaction txNew;
-        txNew.nTime = 1481548886;
+        txNew.nTime = 1486933511;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
         txNew.vin[0].scriptSig = CScript() << 0 << CBigNum(42) << vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
@@ -2555,12 +2555,12 @@ bool LoadBlockIndex(bool fAllowNew)
         block.hashPrevBlock = 0;
         block.hashMerkleRoot = block.BuildMerkleTree();
         block.nVersion = 1;
-        block.nTime    = 1481548886;
+        block.nTime    = 1486933511;
         block.nBits    = bnProofOfWorkLimit.GetCompact();
-        block.nNonce   = 1706912; // !fTestNet ? 352581 : 352581;
+        block.nNonce   = !fTestNet ? 1850843 : 1850843; // !fTestNet ? 352581 : 352581;
         
 // uncomment to log genesis block info        
-//      //  start
+/*
         if (false && block.GetHash() != hashGenesisBlock)
                        {
                            printf("Searching for genesis block...\n");
@@ -2592,10 +2592,10 @@ bool LoadBlockIndex(bool fAllowNew)
 							
                        }
 
-        //end
+        //end*/
         
      
-        assert(block.hashMerkleRoot == uint256("0x271791ff7f0e76083a1253f932510bb56f0a17caa6098142f1e642846b9ef813"));
+        assert(block.hashMerkleRoot == uint256("0x8f556ca6de855bda9ea7a58301b25873b268083674ccf7b4a885a13f39055c2e"));
         assert(block.GetHash() == (!fTestNet ? hashGenesisBlock : hashGenesisBlockTestNet));
         assert(block.CheckBlock());
 
