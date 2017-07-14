@@ -996,13 +996,29 @@ uint256 WantedByOrphan(const CBlock* pblockOrphan)
         pblockOrphan = mapOrphanBlocks[pblockOrphan->hashPrevBlock];
     return pblockOrphan->hashPrevBlock;
 }
-
+uint256 prevHash = 0;
+    if(pindex->pprev)
+        prevHash = pindex->pprev->GetBlockHash();
 // miner's coin base reward
-int64_t GetProofOfWorkReward(int64_t nFees)
+int64_t GetProofOfWorkReward(int64_t nFees, uint256 prevHash)
 {
-    
-            int64_t nSubsidy = 100 * COIN;
+    // Superblock calculations PoW
+    std::string cseed_str = prevHash.ToString().substr(7,7);
+    const char* cseed = cseed_str.c_str();
+    long seed = hex2long(cseed);
+    int rand1 = generateMTRandom(seed, 1000000);
 
+    int64_t nSubsidy = 100 * COIN;
+
+    if(nBestHeight == 0)
+    {
+        nSubsidy = 10500000 * COIN;
+    }
+    else if(nBestHeight > 9999)
+    {
+        if(rand1 <= 15000) // 15% Chance of superblock
+        nSubsidy = 500 * COIN;
+    }
 
     if (fDebug && GetBoolArg("-printcreation"))
         printf("GetProofOfWorkReward() : create=%s nSubsidy=%"PRId64"\n", FormatMoney(nSubsidy).c_str(), nSubsidy);
@@ -1011,9 +1027,20 @@ int64_t GetProofOfWorkReward(int64_t nFees)
 }
 
 // miner's coin stake reward based on coin age spent (coin-days)
-int64_t GetProofOfStakeReward(int64_t nCoinAge, int64_t nFees)
+int64_t GetProofOfStakeReward(int64_t nCoinAge, int64_t nFees, uint256 prevHash)
 {
+    // Superblock calculations PoS
+    std::string cseed_str = prevHash.ToString().substr(7,7);
+    const char* cseed = cseed_str.c_str();
+    long seed = hex2long(cseed);
+    int rand1 = generateMTRandom(seed, 1000000);
+
     int64_t nSubsidy = nCoinAge * COIN_YEAR_REWARD * 33 / (365 * 33 + 8);
+    if(nBestHeight > 9999)
+    {
+        if(rand1 <= 15000) // 15% Chance of superblock
+        nSubsidy = nCoinAge * SUPERBLOCK_REWARD * 33 / (365 * 33 + 8);
+    }
 
     if (fDebug && GetBoolArg("-printcreation"))
         printf("GetProofOfStakeReward(): create=%s nCoinAge=%"PRId64"\n", FormatMoney(nSubsidy).c_str(), nCoinAge);
