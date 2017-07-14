@@ -1,0 +1,9 @@
+Building girlstoken
+
+See doc/readme-qt.rst for instructions on building girlstoken QT,
+the intended-for-end-users, nice-graphical-interface, reference
+implementation of girlstoken.
+
+See doc/build-*.txt for instructions on building girlstokend,
+the intended-for-services, no-graphical-interface, reference
+implementation of girlstoken.
