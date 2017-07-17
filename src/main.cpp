@@ -47,7 +47,7 @@ unsigned int nStakeMinAge = 5 * 60 * 60;
 unsigned int nStakeMaxAge = -1; // unlimited
 unsigned int nModifierInterval = 10 * 60; // time to elapse before new modifier is computed
 
-int nCoinbaseMaturity = 40;
+int nCoinbaseMaturity = 10;
 CBlockIndex* pindexGenesisBlock = NULL;
 int nBestHeight = -1;
 
@@ -70,7 +70,7 @@ map<uint256, set<uint256> > mapOrphanTransactionsByPrev;
 // Constant stuff for coinbase transactions we create:
 CScript COINBASE_FLAGS;
 
-const string strMessageMagic = "girlstoken Signed Message:\n";
+const string strMessageMagic = "GirlsToken Signed Message:\n";
 
 // Settings
 int64_t nTransactionFee = MIN_TX_FEE;
@@ -2004,7 +2004,7 @@ bool CBlock::AddToBlockIndex(unsigned int nFile, unsigned int nBlockPos, const u
 
     // ppcoin: compute stake modifier
     uint64_t nStakeModifier = 0;
-    bool fGeneratedStakeModifier = true;
+    bool fGeneratedStakeModifier = false;
     if (!ComputeNextStakeModifier(pindexNew->pprev, nStakeModifier, fGeneratedStakeModifier))
         return error("AddToBlockIndex() : ComputeNextStakeModifier() failed");
     pindexNew->SetStakeModifier(nStakeModifier, fGeneratedStakeModifier);
@@ -2453,7 +2453,7 @@ bool CheckDiskSpace(uint64_t nAdditionalBytes)
         string strMessage = _("Warning: Disk space is low!");
         strMiscWarning = strMessage;
         printf("*** %s\n", strMessage.c_str());
-        uiInterface.ThreadSafeMessageBox(strMessage, "girlstoken", CClientUIInterface::OK | CClientUIInterface::ICON_EXCLAMATION | CClientUIInterface::MODAL);
+        uiInterface.ThreadSafeMessageBox(strMessage, "GirlsToken", CClientUIInterface::OK | CClientUIInterface::ICON_EXCLAMATION | CClientUIInterface::MODAL);
         StartShutdown();
         return false;
     }
@@ -2515,10 +2515,10 @@ bool LoadBlockIndex(bool fAllowNew)
 
     if (fTestNet)
     {
-        pchMessageStart[0] = 0x5D;
-        pchMessageStart[1] = 0x2E;
-        pchMessageStart[2] = 0xA6;
-        pchMessageStart[3] = 0xE0;
+		pchMessageStart[0] = 0xcd;
+        pchMessageStart[1] = 0x6f;
+        pchMessageStart[2] = 0x86;
+        pchMessageStart[3] = 0xff;
 
         bnTrustedModulus.SetHex("f0d14cf72623dacfe738d0892b599be0f31052239cddd95a3f25101c801dc990453b38c9434efe3f372db39a32c2bb44cbaea72d62c8931fa785b0ec44531308df3e46069be5573e49bb29f4d479bfc3d162f57a5965db03810be7636da265bfced9c01a6b0296c77910ebdc8016f70174f0f18a57b3b971ac43a934c6aedbc5c866764a3622b5b7e3f9832b8b3f133c849dbcc0396588abcd1e41048555746e4823fb8aba5b3d23692c6857fccce733d6bb6ec1d5ea0afafecea14a0f6f798b6b27f77dc989c557795cc39a0940ef6bb29a7fc84135193a55bcfc2f01dd73efad1b69f45a55198bd0e6bef4d338e452f6a420f1ae2b1167b923f76633ab6e55");
         bnProofOfWorkLimit = bnProofOfWorkLimitTestNet; // 16 bits PoW target limit for testnet
@@ -2869,7 +2869,7 @@ bool static AlreadyHave(CTxDB& txdb, const CInv& inv)
 // The message start string is designed to be unlikely to occur in normal data.
 // The characters are rarely used upper ASCII, not valid as UTF-8, and produce
 // a large 4-byte int at any alignment.
-unsigned char pchMessageStart[4] = { 0xde, 0x3a, 0xae, 0x3c };
+unsigned char pchMessageStart[4] = { 0xcd, 0x22, 0xd1, 0xa5 };
 
 bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv)
 {

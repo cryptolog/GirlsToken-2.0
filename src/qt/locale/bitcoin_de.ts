@@ -3,19 +3,19 @@
     <name>AboutDialog</name>
     <message>
         <location filename="../forms/aboutdialog.ui" line="+14"/>
-        <source>About girlstoken</source>
-        <translation>Über girlstoken</translation>
+        <source>About GirlsToken</source>
+        <translation>Über GirlsToken</translation>
     </message>
     <message>
         <location line="+39"/>
-        <source>&lt;b&gt;girlstoken&lt;/b&gt; version</source>
-        <translation>&lt;b&gt;girlstoken&lt;/b&gt; Version</translation>
+        <source>&lt;b&gt;GirlsToken&lt;/b&gt; version</source>
+        <translation>&lt;b&gt;GirlsToken&lt;/b&gt; Version</translation>
     </message>
     <message>
         <location line="+41"/>
         <source>Copyright © 2009-2014 The Bitcoin developers
 Copyright © 2012-2014 The NovaCoin developers
-Copyright © 2014 The girlstoken developers</source>
+Copyright © 2014 The GirlsToken developers</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -63,8 +63,8 @@ Dieses Produkt enthält Software, die vom OpenSSL-Projekt zur Verwendung im Open
     </message>
     <message>
         <location line="-46"/>
-        <source>These are your girlstoken addresses for receiving payments. You may want to give a different one to each sender so you can keep track of who is paying you.</source>
-        <translation>Das sind Ihre girlstoken Adressen um Zahlungen zu erhalten. Sie werden vielleicht verschiedene an jeden Sender vergeben, damit Sie im Auge behalten können wer sie bezahlt.</translation>
+        <source>These are your GirlsToken addresses for receiving payments. You may want to give a different one to each sender so you can keep track of who is paying you.</source>
+        <translation>Das sind Ihre GirlsToken Adressen um Zahlungen zu erhalten. Sie werden vielleicht verschiedene an jeden Sender vergeben, damit Sie im Auge behalten können wer sie bezahlt.</translation>
     </message>
     <message>
         <location line="+60"/>
@@ -78,7 +78,7 @@ Dieses Produkt enthält Software, die vom OpenSSL-Projekt zur Verwendung im Open
     </message>
     <message>
         <location line="+11"/>
-        <source>Sign a message to prove you own a girlstoken address</source>
+        <source>Sign a message to prove you own a GirlsToken address</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -93,7 +93,7 @@ Dieses Produkt enthält Software, die vom OpenSSL-Projekt zur Verwendung im Open
     </message>
     <message>
         <location line="-14"/>
-        <source>Verify a message to ensure it was signed with a specified girlstoken address</source>
+        <source>Verify a message to ensure it was signed with a specified GirlsToken address</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -261,7 +261,7 @@ Dieses Produkt enthält Software, die vom OpenSSL-Projekt zur Verwendung im Open
     </message>
     <message>
         <location line="-58"/>
-        <source>girlstoken will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your coins from being stolen by malware infecting your computer.</source>
+        <source>GirlsToken will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your coins from being stolen by malware infecting your computer.</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -375,7 +375,7 @@ Dieses Produkt enthält Software, die vom OpenSSL-Projekt zur Verwendung im Open
     </message>
     <message>
         <location line="+4"/>
-        <source>Show information about girlstoken</source>
+        <source>Show information about GirlsToken</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -425,12 +425,12 @@ Dieses Produkt enthält Software, die vom OpenSSL-Projekt zur Verwendung im Open
     </message>
     <message>
         <location line="-62"/>
-        <source>Send coins to a girlstoken address</source>
+        <source>Send coins to a GirlsToken address</source>
         <translation type="unfinished"/>
     </message>
     <message>
         <location line="+45"/>
-        <source>Modify configuration options for girlstoken</source>
+        <source>Modify configuration options for GirlsToken</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -470,7 +470,7 @@ Dieses Produkt enthält Software, die vom OpenSSL-Projekt zur Verwendung im Open
     </message>
     <message>
         <location line="-200"/>
-        <source>girlstoken</source>
+        <source>GirlsToken</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -480,7 +480,7 @@ Dieses Produkt enthält Software, die vom OpenSSL-Projekt zur Verwendung im Open
     </message>
     <message>
         <location line="+178"/>
-        <source>&amp;About girlstoken</source>
+        <source>&amp;About GirlsToken</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -537,12 +537,12 @@ Dieses Produkt enthält Software, die vom OpenSSL-Projekt zur Verwendung im Open
     <message>
         <location line="+0"/>
         <location line="+60"/>
-        <source>girlstoken client</source>
+        <source>GirlsToken client</source>
         <translation type="unfinished"/>
     </message>
     <message numerus="yes">
         <location line="+70"/>
-        <source>%n active connection(s) to girlstoken network</source>
+        <source>%n active connection(s) to GirlsToken network</source>
         <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message>
@@ -656,7 +656,7 @@ Adresse: %4</translation>
     <message>
         <location line="-15"/>
         <location line="+15"/>
-        <source>URI can not be parsed! This can be caused by an invalid girlstoken address or malformed URI parameters.</source>
+        <source>URI can not be parsed! This can be caused by an invalid GirlsToken address or malformed URI parameters.</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -716,7 +716,7 @@ Adresse: %4</translation>
     </message>
     <message>
         <location filename="../bitcoin.cpp" line="+109"/>
-        <source>A fatal error occurred. girlstoken can no longer continue safely and will quit.</source>
+        <source>A fatal error occurred. GirlsToken can no longer continue safely and will quit.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1036,8 +1036,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="-5"/>
-        <source>The entered address &quot;%1&quot; is not a valid girlstoken address.</source>
-        <translation>Die eingegebene Adresse &quot;%1&quot; ist keine gültige girlstoken Adresse.</translation>
+        <source>The entered address &quot;%1&quot; is not a valid GirlsToken address.</source>
+        <translation>Die eingegebene Adresse &quot;%1&quot; ist keine gültige GirlsToken Adresse.</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -1055,7 +1055,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <location filename="../guiutil.cpp" line="+420"/>
         <location line="+12"/>
-        <source>girlstoken-Qt</source>
+        <source>GirlsToken-Qt</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -1128,13 +1128,13 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+31"/>
-        <source>Automatically start girlstoken after logging in to the system.</source>
-        <translation>Automatisch girlstoken starten beim Einloggen in das System.</translation>
+        <source>Automatically start GirlsToken after logging in to the system.</source>
+        <translation>Automatisch GirlsToken starten beim Einloggen in das System.</translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>&amp;Start girlstoken on system login</source>
-        <translation>&amp;Starte girlstoken bei Systemstart</translation>
+        <source>&amp;Start GirlsToken on system login</source>
+        <translation>&amp;Starte GirlsToken bei Systemstart</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -1153,8 +1153,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+6"/>
-        <source>Automatically open the girlstoken client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Automatisch den girlstoken client port auf dem Router öffnen. Das funktioniert nur wenn der Router UPnP unterstützt und UPnP aktiviert ist.</translation>
+        <source>Automatically open the GirlsToken client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Automatisch den GirlsToken client port auf dem Router öffnen. Das funktioniert nur wenn der Router UPnP unterstützt und UPnP aktiviert ist.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1163,7 +1163,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+7"/>
-        <source>Connect to the girlstoken network through a SOCKS proxy (e.g. when connecting through Tor).</source>
+        <source>Connect to the GirlsToken network through a SOCKS proxy (e.g. when connecting through Tor).</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -1238,7 +1238,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+13"/>
-        <source>The user interface language can be set here. This setting will take effect after restarting girlstoken.</source>
+        <source>The user interface language can be set here. This setting will take effect after restarting GirlsToken.</source>
         <translation>Die Sprache der GUI kann hier verändert werden. Die Einstellung wird nach einem Neustart übernommen.</translation>
     </message>
     <message>
@@ -1253,8 +1253,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+9"/>
-        <source>Whether to show girlstoken addresses in the transaction list or not.</source>
-        <translation>girlstoken Adressen in der Überweisung anzeigen oder nicht.</translation>
+        <source>Whether to show GirlsToken addresses in the transaction list or not.</source>
+        <translation>GirlsToken Adressen in der Überweisung anzeigen oder nicht.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1300,7 +1300,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <location line="-9"/>
         <location line="+9"/>
-        <source>This setting will take effect after restarting girlstoken.</source>
+        <source>This setting will take effect after restarting GirlsToken.</source>
         <translation>Diese Einstellung wird nach einem Neustart übernommen.</translation>
     </message>
     <message>
@@ -1319,8 +1319,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <location line="+33"/>
         <location line="+231"/>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the girlstoken network after a connection is established, but this process has not completed yet.</source>
-        <translation>Die angezeigte Information kann falsch sein. Die Brieftasche synchronisiert automatisch mit dem girlstoken Netzwerk nachdem eine Verbindung zustande gekommen ist, aber dieser Prozess ist nicht abgeschlossen.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the GirlsToken network after a connection is established, but this process has not completed yet.</source>
+        <translation>Die angezeigte Information kann falsch sein. Die Brieftasche synchronisiert automatisch mit dem GirlsToken Netzwerk nachdem eine Verbindung zustande gekommen ist, aber dieser Prozess ist nicht abgeschlossen.</translation>
     </message>
     <message>
         <location line="-160"/>
@@ -1535,7 +1535,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+7"/>
-        <source>Show the girlstoken-Qt help message to get a list with possible girlstoken command-line options.</source>
+        <source>Show the GirlsToken-Qt help message to get a list with possible GirlsToken command-line options.</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -1555,13 +1555,13 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="-104"/>
-        <source>girlstoken - Debug window</source>
-        <translation>girlstoken - Debug Fenster</translation>
+        <source>GirlsToken - Debug window</source>
+        <translation>GirlsToken - Debug Fenster</translation>
     </message>
     <message>
         <location line="+25"/>
-        <source>girlstoken Core</source>
-        <translation>girlstoken Kern</translation>
+        <source>GirlsToken Core</source>
+        <translation>GirlsToken Kern</translation>
     </message>
     <message>
         <location line="+279"/>
@@ -1570,7 +1570,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+7"/>
-        <source>Open the girlstoken debug log file from the current data directory. This can take a few seconds for large log files.</source>
+        <source>Open the GirlsToken debug log file from the current data directory. This can take a few seconds for large log files.</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -1580,7 +1580,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location filename="../rpcconsole.cpp" line="-33"/>
-        <source>Welcome to the girlstoken RPC console.</source>
+        <source>Welcome to the GirlsToken RPC console.</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -1739,7 +1739,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location filename="../sendcoinsdialog.cpp" line="-173"/>
-        <source>Enter a girlstoken address (e.g. B8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</source>
+        <source>Enter a GirlsToken address (e.g. B8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -1839,7 +1839,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+251"/>
-        <source>WARNING: Invalid girlstoken address</source>
+        <source>WARNING: Invalid GirlsToken address</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -1913,7 +1913,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location filename="../sendcoinsentry.cpp" line="+1"/>
-        <source>Enter a girlstoken address (e.g. B8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</source>
+        <source>Enter a GirlsToken address (e.g. B8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1974,8 +1974,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+21"/>
-        <source>Sign the message to prove you own this girlstoken address</source>
-        <translation>Signiere die Nachricht um zu beweisen das du Besitzer dieser girlstoken Adresse bist.</translation>
+        <source>Sign the message to prove you own this GirlsToken address</source>
+        <translation>Signiere die Nachricht um zu beweisen das du Besitzer dieser GirlsToken Adresse bist.</translation>
     </message>
     <message>
         <location line="+17"/>
@@ -2006,7 +2006,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+40"/>
-        <source>Verify the message to ensure it was signed with the specified girlstoken address</source>
+        <source>Verify the message to ensure it was signed with the specified GirlsToken address</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -2017,7 +2017,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <location filename="../signverifymessagedialog.cpp" line="+27"/>
         <location line="+3"/>
-        <source>Enter a girlstoken address (e.g. B8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</source>
+        <source>Enter a GirlsToken address (e.g. B8gZqgY4r2RoEdqYk3QsAqFckyf9pRHN6i)</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -2027,8 +2027,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+3"/>
-        <source>Enter girlstoken signature</source>
-        <translation>girlstoken Signatur eingeben</translation>
+        <source>Enter GirlsToken signature</source>
+        <translation>GirlsToken Signatur eingeben</translation>
     </message>
     <message>
         <location line="+82"/>
@@ -2598,7 +2598,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <name>bitcoin-core</name>
     <message>
         <location filename="../bitcoinstrings.cpp" line="+33"/>
-        <source>girlstoken version</source>
+        <source>GirlsToken version</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -2608,8 +2608,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+1"/>
-        <source>Send command to -server or girlstokend</source>
-        <translation>Kommando versenden an -server oder girlstokend </translation>
+        <source>Send command to -server or GirlsTokend</source>
+        <translation>Kommando versenden an -server oder GirlsTokend </translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2628,13 +2628,13 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+2"/>
-        <source>Specify configuration file (default: girlstoken.conf)</source>
-        <translation>Konfigurationsdatei angeben (Standard: girlstoken.conf)</translation>
+        <source>Specify configuration file (default: GirlsToken.conf)</source>
+        <translation>Konfigurationsdatei angeben (Standard: GirlsToken.conf)</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Specify pid file (default: girlstokend.pid)</source>
-        <translation>PID Datei angeben (Standard: girlstoken.pid)</translation>
+        <source>Specify pid file (default: GirlsTokend.pid)</source>
+        <translation>PID Datei angeben (Standard: GirlsToken.pid)</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -2783,8 +2783,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+61"/>
-        <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong girlstoken will not work properly.</source>
-        <translation>Wanung : Bitte prüfen Sie ob Datum und Uhrzeit richtig eingestellt sind. Wenn das Datum falsch ist girlstoken nicht richtig funktionieren.</translation>
+        <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong GirlsToken will not work properly.</source>
+        <translation>Wanung : Bitte prüfen Sie ob Datum und Uhrzeit richtig eingestellt sind. Wenn das Datum falsch ist GirlsToken nicht richtig funktionieren.</translation>
     </message>
     <message>
         <location line="-31"/>
@@ -2972,13 +2972,13 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <source>%s, you must set a rpcpassword in the configuration file:
  %s
 It is recommended you use the following random password:
-rpcuser=chesscoinrpc
+rpcuser=GirlsTokenrpc
 rpcpassword=%s
 (you do not need to remember this password)
 The username and password MUST NOT be the same.
 If the file does not exist, create it with owner-readable-only file permissions.
 It is also recommended to set alertnotify so you are notified of problems;
-for example: alertnotify=echo %%s | mail -s &quot;girlstoken Alert&quot; admin@foo.com
+for example: alertnotify=echo %%s | mail -s &quot;GirlsToken Alert&quot; admin@foo.com
 </source>
         <translation type="unfinished"/>
     </message>
@@ -3104,13 +3104,13 @@ for example: alertnotify=echo %%s | mail -s &quot;girlstoken Alert&quot; admin@f
     </message>
     <message>
         <location line="+1"/>
-        <source>Cannot obtain a lock on data directory %s.  girlstoken is probably already running.</source>
-        <translation>Kann das Verzeichniss nicht einbinden %s. girlstoken Brieftasche läuft wahrscheinlich bereits.</translation>
+        <source>Cannot obtain a lock on data directory %s.  GirlsToken is probably already running.</source>
+        <translation>Kann das Verzeichniss nicht einbinden %s. GirlsToken Brieftasche läuft wahrscheinlich bereits.</translation>
     </message>
     <message>
         <location line="-98"/>
-        <source>girlstoken</source>
-        <translation>girlstoken</translation>
+        <source>GirlsToken</source>
+        <translation>GirlsToken</translation>
     </message>
     <message>
         <location line="+140"/>
@@ -3144,13 +3144,13 @@ for example: alertnotify=echo %%s | mail -s &quot;girlstoken Alert&quot; admin@f
     </message>
     <message>
         <location line="+4"/>
-        <source>Error loading wallet.dat: Wallet requires newer version of girlstoken</source>
-        <translation>Fehler beim Laden wallet.dat. Brieftasche benötigt neuere Version der girlstoken Brieftasche.</translation>
+        <source>Error loading wallet.dat: Wallet requires newer version of GirlsToken</source>
+        <translation>Fehler beim Laden wallet.dat. Brieftasche benötigt neuere Version der GirlsToken Brieftasche.</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Wallet needed to be rewritten: restart girlstoken to complete</source>
-        <translation>Brieftasche muss neu geschrieben werden. Starte die girlstoken Brieftasche neu zum komplettieren.</translation>
+        <source>Wallet needed to be rewritten: restart GirlsToken to complete</source>
+        <translation>Brieftasche muss neu geschrieben werden. Starte die GirlsToken Brieftasche neu zum komplettieren.</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -3219,7 +3219,7 @@ for example: alertnotify=echo %%s | mail -s &quot;girlstoken Alert&quot; admin@f
     </message>
     <message>
         <location line="+122"/>
-        <source>Unable to bind to %s on this computer. girlstoken is probably already running.</source>
+        <source>Unable to bind to %s on this computer. GirlsToken is probably already running.</source>
         <translation>Fehler beim anbinden %s auf diesem Computer. BlaclCoin Client läuft wahrscheinlich bereits.</translation>
     </message>
     <message>

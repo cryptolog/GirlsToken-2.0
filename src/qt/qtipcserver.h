@@ -1,7 +1,7 @@
 #ifndef QTIPCSERVER_H
 #define QTIPCSERVER_H
 
-// Define girlstoken-Qt message queue name
+// Define GirlsToken-Qt message queue name
 #define BITCOINURI_QUEUE_NAME "ChessCoinURI"
 
 void ipcScanRelay(int argc, char *argv[]);
