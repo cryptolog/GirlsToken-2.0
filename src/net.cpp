@@ -48,6 +48,7 @@ struct LocalServiceInfo {
 //
 bool fDiscover = true;
 bool fUseUPnP = false;
+static CNode* pnodeSync = NULL;
 uint64_t nLocalServices = NODE_NETWORK;
 static CCriticalSection cs_mapLocalHost;
 static map<CNetAddr, LocalServiceInfo> mapLocalHost;
@@ -617,6 +618,9 @@ void CNode::copyStats(CNodeStats &stats)
     X(fInbound);
     X(nStartingHeight);
     X(nMisbehavior);
+	X(nSendBytes);
+    X(nRecvBytes);
+    stats.fSyncNode = (this == pnodeSync);
 }
 #undef X
 
@@ -997,6 +1001,7 @@ void ThreadSocketHandler2(void* parg)
                             if (!pnode->ReceiveMsgBytes(pchBuf, nBytes))
                                 pnode->CloseSocketDisconnect();
                             pnode->nLastRecv = GetTime();
+							pnode->nRecvBytes += nBytes;
                         }
                         else if (nBytes == 0)
                         {
