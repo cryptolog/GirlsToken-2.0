@@ -55,12 +55,16 @@ Value getpeerinfo(const Array& params, bool fHelp)
         obj.push_back(Pair("services", strprintf("%08"PRIx64, stats.nServices)));
         obj.push_back(Pair("lastsend", (int64_t)stats.nLastSend));
         obj.push_back(Pair("lastrecv", (int64_t)stats.nLastRecv));
+		obj.push_back(Pair("bytessent", (boost::int64_t)stats.nSendBytes));
+        obj.push_back(Pair("bytesrecv", (boost::int64_t)stats.nRecvBytes));
         obj.push_back(Pair("conntime", (int64_t)stats.nTimeConnected));
         obj.push_back(Pair("version", stats.nVersion));
         obj.push_back(Pair("subver", stats.strSubVer));
         obj.push_back(Pair("inbound", stats.fInbound));
         obj.push_back(Pair("startingheight", stats.nStartingHeight));
         obj.push_back(Pair("banscore", stats.nMisbehavior));
+		if (stats.fSyncNode)
+            obj.push_back(Pair("syncnode", true));
 
         ret.push_back(obj);
     }

@@ -142,6 +142,9 @@ public:
     bool fInbound;
     int nStartingHeight;
     int nMisbehavior;
+    uint64 nSendBytes;
+    uint64 nRecvBytes;
+    bool fSyncNode;
 };
 
 
@@ -196,11 +199,13 @@ public:
     CDataStream ssSend;
     size_t nSendSize; // total size of all vSendMsg entries
     size_t nSendOffset; // offset inside the first vSendMsg already sent
+	uint64 nSendBytes;
     std::deque<CSerializeData> vSendMsg;
     CCriticalSection cs_vSend;
 
     std::deque<CNetMessage> vRecvMsg;
     CCriticalSection cs_vRecvMsg;
+	uint64 nRecvBytes;
     int nRecvVersion;
 
     int64_t nLastSend;
@@ -256,6 +261,8 @@ public:
         nRecvVersion = INIT_PROTO_VERSION;
         nLastSend = 0;
         nLastRecv = 0;
+		nSendBytes = 0;
+        nRecvBytes = 0;
         nLastSendEmpty = GetTime();
         nTimeConnected = GetTime();
         addr = addrIn;
