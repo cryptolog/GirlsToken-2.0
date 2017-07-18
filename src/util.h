@@ -28,7 +28,16 @@
 #include <openssl/ripemd.h>
 
 #include "netbase.h" // for AddTimeData
-
+#ifdef PRId64
+#if defined(_MSC_VER) || defined(__MSVCRT__)
+#undef PRId64
+#define PRId64 "I64d"
+#undef PRIu64
+#define PRIu64 "I64u"
+#undef PRIx64
+#define PRIx64 "I64x"
+#endif
+#endif
 // to obtain PRId64 on some old systems
 #define __STDC_FORMAT_MACROS 1
 
