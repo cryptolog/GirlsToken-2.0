@@ -263,13 +263,6 @@ std::string HelpMessage()
         "  -bantime=<n>           " + _("Number of seconds to keep misbehaving peers from reconnecting (default: 86400)") + "\n" +
         "  -maxreceivebuffer=<n>  " + _("Maximum per-connection receive buffer, <n>*1000 bytes (default: 5000)") + "\n" +
         "  -maxsendbuffer=<n>     " + _("Maximum per-connection send buffer, <n>*1000 bytes (default: 1000)") + "\n" +
-#ifdef USE_UPNP
-#if USE_UPNP
-        "  -upnp                  " + _("Use UPnP to map the listening port (default: 1 when listening)") + "\n" +
-#else
-        "  -upnp                  " + _("Use UPnP to map the listening port (default: 0)") + "\n" +
-#endif
-#endif
         "  -paytxfee=<amt>        " + _("Fee per KB to add to transactions you send") + "\n" +
         "  -mininput=<amt>        " + _("When creating transactions, ignore inputs with value less than this (default: 0.01)") + "\n" +
 #ifdef QT_GUI
@@ -715,8 +708,8 @@ bool AppInit2()
         return false;
     }
 
-    uiInterface.InitMessage(_("Loading block index..."));
-    printf("Loading block index...\n");
+    uiInterface.InitMessage(_("Loading blockchain..."));
+    printf("Loading blockchain...\n");
     nStart = GetTimeMillis();
     if (!LoadBlockIndex())
         return InitError(_("Error loading blkindex.dat"));
@@ -847,7 +840,7 @@ bool AppInit2()
     }
     if (pindexBest != pindexRescan && pindexBest && pindexRescan && pindexBest->nHeight > pindexRescan->nHeight)
     {
-        uiInterface.InitMessage(_("Rescanning..."));
+        uiInterface.InitMessage(_("Rescanning blockchain..."));
         printf("Rescanning last %i blocks (from block %i)...\n", pindexBest->nHeight - pindexRescan->nHeight, pindexRescan->nHeight);
         nStart = GetTimeMillis();
         pwalletMain->ScanForWalletTransactions(pindexRescan, true);
@@ -883,7 +876,7 @@ bool AppInit2()
 
     // ********************************************************* Step 10: load peers
 
-    uiInterface.InitMessage(_("Loading addresses..."));
+    uiInterface.InitMessage(_("Loading GirlsToken peers..."));
     printf("Loading addresses...\n");
     nStart = GetTimeMillis();
 
@@ -918,7 +911,7 @@ bool AppInit2()
 
     // ********************************************************* Step 12: finished
 
-    uiInterface.InitMessage(_("Done loading"));
+    uiInterface.InitMessage(_("Finished Loading.... ENJOY"));
     printf("Done loading\n");
 
     if (!strErrors.str().empty())
