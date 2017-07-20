@@ -3,7 +3,7 @@ GIRLSTOKEN
 
 Algorithm   Scrypt  
 Type   PoW/PoS  
-Coin name   girlstoken  
+Coin name   GirlsToken  
 Coin abbreviation   XGTC  
 Address letter   G  
 RPC port   10666  

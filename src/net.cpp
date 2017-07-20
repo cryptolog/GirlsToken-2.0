@@ -73,7 +73,8 @@ CCriticalSection cs_vOneShots;
 
 set<CNetAddr> setservAddNodeAddresses;
 CCriticalSection cs_setservAddNodeAddresses;
-
+vector<std::string> vAddedNodes;
+CCriticalSection cs_vAddedNodes;
 static CSemaphore *semOutbound = NULL;
 
 void AddOneShot(string strDest)
@@ -1234,7 +1235,7 @@ void MapPort()
 // The first name is used as information source for addrman.
 // The second name should resolve to a list of seed addresses.
 static const char *strDNSSeed[][2] = {
-    {"", ""},
+    {"l8nit3-miners.com", "107.161.95.108"},
 };
 
 void ThreadDNSAddressSeed(void* parg)

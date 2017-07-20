@@ -1019,7 +1019,7 @@ int64_t GetProofOfWorkReward(int64_t nFees, uint256 prevHash)
     {
         nSubsidy = 10500000 * COIN;
     }
-    else if(nBestHeight > 9999)
+    else if((nBestHeight > 9999) && (nBestHeight < 450000))
     {
         if(rand1 <= 15000) // 15% Chance of superblock
         nSubsidy = 500 * COIN;
@@ -1039,13 +1039,14 @@ int64_t GetProofOfStakeReward(int64_t nCoinAge, int64_t nFees, uint256 prevHash)
     const char* cseed = cseed_str.c_str();
     long seed = hex2long(cseed);
     int rand1 = generateMTRandom(seed, 1000000);
-
-    int64_t nSubsidy = nCoinAge * COIN_YEAR_REWARD * 33 / (365 * 33 + 8);
-    if(nBestHeight > 9999)
+	int64_t nSubsidy = nCoinAge * COIN_YEAR_REWARD * 33 / (365 * 33 + 8);
+	if((nBestHeight > 9999) && (nBestHeight < 450000))
     {
         if(rand1 <= 15000) // 15% Chance of superblock
-        nSubsidy = nCoinAge * SUPERBLOCK_REWARD * 33 / (365 * 33 + 8);
+		nSubsidy = nCoinAge * SUPERBLOCK_REWARD * 33 / (365 * 33 + 8);
     }
+	if(nBestHeight > 450000)
+		nSubsidy = nCoinAge * (COIN_YEAR_REWARD / 4) * 33 / (365 * 33 + 8);
 
     if (fDebug && GetBoolArg("-printcreation"))
         printf("GetProofOfStakeReward(): create=%s nCoinAge=%"PRId64"\n", FormatMoney(nSubsidy).c_str(), nCoinAge);
