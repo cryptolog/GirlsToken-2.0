@@ -9,9 +9,9 @@ Address letter   G
 RPC port   10666  
 P2P port   10665  
 Block reward   100 coins  
-Ramdom superblocks 500 coins  
+Ramdom superblocks 500 coins  end at block 450k
 Starting at block 10000  
-High chances to get a ramdom superblock [15%]  
+High chances to get a ramdom superblock [15%]  end at block 450k
 Total pow coin supply   115000000 coins  
 Premine amount   10500000 coins  
 Last PoW block   block 1000000  
@@ -20,11 +20,10 @@ Target spacing   64 seconds
 Target timespan   1 block  
 Transaction confirmations   4 blocks  
 Dark gravity wave implemented  
-Seed nodes [3]  
-PoS percentage   10% per year  
-Ramdom PoS superblocks set on 100% payout  
+Dedicated built-in seed for easy syncing
+PoS percentage   10% per year drop to 2.5% at block 450k 
+Ramdom PoS superblocks set on 100% payout end at block 450k
 Min/max coin age 5/unlimited  
-Original Developer: Bitcointalk user 'Tami'  
 
 
 Development process
