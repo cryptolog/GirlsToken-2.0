@@ -10,6 +10,7 @@
 #include "strlcpy.h"
 #include "addrman.h"
 #include "ui_interface.h"
+#include "script.h"
 
 #ifdef WIN32
 #include <string.h>
@@ -2056,6 +2057,17 @@ void RelayTransaction(const CTransaction& tx, const uint256& hash, const CDataSt
         mapRelay.insert(std::make_pair(inv, ss));
         vRelayExpiration.push_back(std::make_pair(GetTime() + 15 * 60, inv));
     }
-
-    RelayInventory(inv);
+    LOCK(cs_vNodes);
+    BOOST_FOREACH(CNode* pnode, vNodes)
+    {
+        if(!pnode->fRelayTxes)
+            continue;
+        LOCK(pnode->cs_filter);
+        if (pnode->pfilter)
+        {
+            if (pnode->pfilter->IsRelevantAndUpdate(tx, hash))
+                pnode->PushInventory(inv);
+        } else
+            pnode->PushInventory(inv);
+    }
 }

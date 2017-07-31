@@ -18,6 +18,7 @@
 #include "netbase.h"
 #include "protocol.h"
 #include "addrman.h"
+#include "bloom.h"
 
 class CRequestTracker;
 class CNode;
@@ -74,6 +75,7 @@ enum
 {
     MSG_TX = 1,
     MSG_BLOCK,
+	MSG_FILTERED_BLOCK,
 };
 
 class CRequestTracker
@@ -224,7 +226,10 @@ public:
     bool fNetworkNode;
     bool fSuccessfullyConnected;
     bool fDisconnect;
+	bool fRelayTxes;
     CSemaphoreGrant grantOutbound;
+	CCriticalSection cs_filter;
+    CBloomFilter* pfilter;
     int nRefCount;
 protected:
 
@@ -285,8 +290,10 @@ public:
         nStartingHeight = -1;
         fGetAddr = false;
         nMisbehavior = 0;
+		fRelayTxes = false;
         hashCheckpointKnown = 0;
         setInventoryKnown.max_size(SendBufferSize() / 1000);
+		pfilter = NULL;
 
         // Be shy and don't send version until we hear
         if (hSocket != INVALID_SOCKET && !fInbound)
@@ -300,6 +307,8 @@ public:
             closesocket(hSocket);
             hSocket = INVALID_SOCKET;
         }
+		if (pfilter)
+            delete pfilter;
     }
 
 private:
@@ -692,7 +701,7 @@ public:
     void copyStats(CNodeStats &stats);
 };
 
-inline void RelayInventory(const CInv& inv)
+/**inline void RelayInventory(const CInv& inv)
 {
     // Put on lists to offer to the other nodes
     {
@@ -700,7 +709,7 @@ inline void RelayInventory(const CInv& inv)
         BOOST_FOREACH(CNode* pnode, vNodes)
             pnode->PushInventory(inv);
     }
-}
+}*/
 
 class CTransaction;
 void RelayTransaction(const CTransaction& tx, const uint256& hash);
