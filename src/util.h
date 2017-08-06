@@ -200,7 +200,7 @@ bool ATTR_WARN_PRINTF(1,2) error(const char *format, ...);
  * which confuses gcc.
  */
 #define printf OutputDebugStringF
-std::string SanitizeString(const std::string& str);
+
 void PrintException(std::exception* pex, const char* pszThread);
 void PrintExceptionContinue(std::exception* pex, const char* pszThread);
 void ParseString(const std::string& str, char c, std::vector<std::string>& v);

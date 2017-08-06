@@ -18,7 +18,6 @@
 #include "netbase.h"
 #include "protocol.h"
 #include "addrman.h"
-#include "bloom.h"
 
 class CRequestTracker;
 class CNode;
@@ -75,7 +74,6 @@ enum
 {
     MSG_TX = 1,
     MSG_BLOCK,
-	MSG_FILTERED_BLOCK,
 };
 
 class CRequestTracker
@@ -199,6 +197,7 @@ public:
     // socket
     uint64_t nServices;
     SOCKET hSocket;
+	
     CDataStream ssSend;
     size_t nSendSize; // total size of all vSendMsg entries
     size_t nSendOffset; // offset inside the first vSendMsg already sent
@@ -226,10 +225,7 @@ public:
     bool fNetworkNode;
     bool fSuccessfullyConnected;
     bool fDisconnect;
-	bool fRelayTxes;
     CSemaphoreGrant grantOutbound;
-	CCriticalSection cs_filter;
-    CBloomFilter* pfilter;
     int nRefCount;
 protected:
 
@@ -290,10 +286,8 @@ public:
         nStartingHeight = -1;
         fGetAddr = false;
         nMisbehavior = 0;
-		fRelayTxes = false;
         hashCheckpointKnown = 0;
         setInventoryKnown.max_size(SendBufferSize() / 1000);
-		pfilter = NULL;
 
         // Be shy and don't send version until we hear
         if (hSocket != INVALID_SOCKET && !fInbound)
@@ -307,11 +301,13 @@ public:
             closesocket(hSocket);
             hSocket = INVALID_SOCKET;
         }
-		if (pfilter)
-            delete pfilter;
     }
 
 private:
+	static CCriticalSection cs_totalBytesRecv;
+    static CCriticalSection cs_totalBytesSent;
+    static uint64_t nTotalBytesRecv;
+    static uint64_t nTotalBytesSent;
     CNode(const CNode&);
     void operator=(const CNode&);
 public:
@@ -699,9 +695,13 @@ public:
     static bool IsBanned(CNetAddr ip);
     bool Misbehaving(int howmuch); // 1 == a little, 100 == a lot
     void copyStats(CNodeStats &stats);
+	static void RecordBytesRecv(uint64_t bytes);
+    static void RecordBytesSent(uint64_t bytes);
+    static uint64_t GetTotalBytesRecv();
+    static uint64_t GetTotalBytesSent();
 };
 
-/**inline void RelayInventory(const CInv& inv)
+inline void RelayInventory(const CInv& inv)
 {
     // Put on lists to offer to the other nodes
     {
@@ -709,7 +709,7 @@ public:
         BOOST_FOREACH(CNode* pnode, vNodes)
             pnode->PushInventory(inv);
     }
-}*/
+}
 
 class CTransaction;
 void RelayTransaction(const CTransaction& tx, const uint256& hash);

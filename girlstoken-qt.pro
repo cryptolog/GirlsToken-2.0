@@ -1,6 +1,6 @@
 TEMPLATE = app
-TARGET = GirlsToken2.1.1
-VERSION = 2.1.1.0
+TARGET = GirlsToken2.1.1.1
+VERSION = 2.1.1.1
 INCLUDEPATH += src src/json src/qt
 DEFINES += QT_GUI BOOST_THREAD_USE_LIB BOOST_SPIRIT_THREADSAFE
 CONFIG += no_include_pwd
@@ -12,17 +12,8 @@ greaterThan(QT_MAJOR_VERSION, 4) {
 }
 # My deps locations
 windows {
-	BOOST_LIB_SUFFIX=-mgw49-mt-s-1_55
-	BOOST_INCLUDE_PATH=C:/deps/boost_1_55_0
-	BOOST_LIB_PATH=C:/deps/boost_1_55_0/stage/lib
-	BDB_INCLUDE_PATH=C:/deps/db-4.8.30.NC/build_unix
-	BDB_LIB_PATH=C:/deps/db-4.8.30.NC/build_unix
-	OPENSSL_INCLUDE_PATH=C:/deps/openssl-1.0.1j/include
-	OPENSSL_LIB_PATH=C:/deps/openssl-1.0.1j
 	MINIUPNPC_INCLUDE_PATH=C:/deps/
 	MINIUPNPC_LIB_PATH=C:/deps/miniupnpc
-	QRENCODE_INCLUDE_PATH=C:/deps/qrencode-3.4.4
-	QRENCODE_LIB_PATH=C:/deps/qrencode-3.4.4/.libs
 	}
 
 # for boost 1.37, add -mt to the boost libraries
@@ -60,7 +51,22 @@ QMAKE_LFLAGS *= -fstack-protector-all --param ssp-buffer-size=1
 # for extra security on Windows: enable ASLR and DEP via GCC linker flags
 win32:QMAKE_LFLAGS *= -Wl,--dynamicbase -Wl,--nxcompat -static
 win32:QMAKE_LFLAGS += -static-libgcc -static-libstdc++
-
+# use: qmake "USE_UPNP=1" ( enabled by default; default)
+#  or: qmake "USE_UPNP=0" (disabled by default)
+#  or: qmake "USE_UPNP=-" (not supported)
+# miniupnpc (http://miniupnp.free.fr/files/) must be installed for support
+contains(USE_UPNP, -) {
+    message(Building without UPNP support)
+} else {
+    message(Building with UPNP support)
+    count(USE_UPNP, 0) {
+        USE_UPNP=1
+    }
+    DEFINES += USE_UPNP=$$USE_UPNP MINIUPNP_STATICLIB STATICLIB
+    INCLUDEPATH += $$MINIUPNPC_INCLUDE_PATH
+    LIBS += $$join(MINIUPNPC_LIB_PATH,,-L,) -lminiupnpc
+    win32:LIBS += -liphlpapi
+}
 # use: qmake "USE_QRCODE=1"
 # libqrencode (http://fukuchi.org/works/qrencode/index.en.html) must be installed for support
 contains(USE_QRCODE, 1) {
@@ -174,7 +180,6 @@ HEADERS += src/qt/bitcoingui.h \
     src/script.h \
     src/init.h \
     src/irc.h \
-	src/bloom.h \
     src/mruset.h \
     src/json/json_spirit_writer_template.h \
     src/json/json_spirit_writer.h \
@@ -235,7 +240,6 @@ SOURCES += src/qt/bitcoin.cpp src/qt/bitcoingui.cpp \
     src/version.cpp \
     src/sync.cpp \
     src/util.cpp \
-	src/hash.cpp \
     src/netbase.cpp \
     src/key.cpp \
     src/script.cpp \
@@ -244,7 +248,6 @@ SOURCES += src/qt/bitcoin.cpp src/qt/bitcoingui.cpp \
     src/init.cpp \
     src/net.cpp \
     src/irc.cpp \
-	src/bloom.cpp \
     src/checkpoints.cpp \
     src/addrman.cpp \
     src/db.cpp \
@@ -349,7 +352,7 @@ OTHER_FILES += \
 # platform specific defaults, if not overridden on command line
 isEmpty(BOOST_LIB_SUFFIX) {
     macx:BOOST_LIB_SUFFIX = -mt
-    windows:BOOST_LIB_SUFFIX = -mt
+    windows:BOOST_LIB_SUFFIX=-mgw49-mt-s-1_55
 }
 
 isEmpty(BOOST_THREAD_LIB_SUFFIX) {
@@ -359,6 +362,7 @@ isEmpty(BOOST_THREAD_LIB_SUFFIX) {
 
 isEmpty(BDB_LIB_PATH) {
     macx:BDB_LIB_PATH = /usr/local/Cellar/berkeley-db@4/4.8.30/lib
+	windows:BDB_LIB_PATH=C:/deps/db-4.8.30.NC/build_unix
 }
 
 isEmpty(BDB_LIB_SUFFIX) {
@@ -367,26 +371,33 @@ isEmpty(BDB_LIB_SUFFIX) {
 
 isEmpty(BDB_INCLUDE_PATH) {
     macx:BDB_INCLUDE_PATH = /usr/local/Cellar/berkeley-db@4/4.8.30/include
+	windows:BDB_INCLUDE_PATH=C:/deps/db-4.8.30.NC/build_unix
 }
 
 isEmpty(BOOST_LIB_PATH) {
     macx:BOOST_LIB_PATH = /usr/local/Cellar/boost@1.55/1.55.0_1/lib
+	windows:BOOST_LIB_PATH=C:/deps/boost_1_55_0/stage/lib
 }
 
 isEmpty(BOOST_INCLUDE_PATH) {
     macx:BOOST_INCLUDE_PATH = /usr/local/Cellar/boost@1.55/1.55.0_1/include
+	windows:BOOST_INCLUDE_PATH=C:/deps/boost_1_55_0
 }
 isEmpty(OPENSSL_INCLUDE_PATH) {
     macx:OPENSSL_INCLUDE_PATH = /usr/local/Cellar/openssl/1.0.2l/include/openssl
+	windows:OPENSSL_INCLUDE_PATH=C:/deps/openssl-1.0.1j/include
 }
 isEmpty(OPENSSL_LIB_PATH) {
     macx:OPENSSL_INCLUDE_PATH = /usr/local/Cellar/openssl/1.0.2l/lib
+	windows:OPENSSL_LIB_PATH=C:/deps/openssl-1.0.1j
 }
 isEmpty(QRENCODE_INCLUDE_PATH) {
     macx:QRENCODE_INCLUDE_PATH = /usr/local/Cellar/qrencode/3.4.4/include
+	windows:QRENCODE_INCLUDE_PATH=C:/deps/qrencode-3.4.4
 }
 isEmpty(QRENCODE_LIB_PATH) {
     macx:QRENCODE_LIB_PATH = /usr/local/Cellar/qrencode/3.4.4/lib
+	windows:QRENCODE_LIB_PATH=C:/deps/qrencode-3.4.4/.libs
 }
 
 windows:DEFINES += WIN32
