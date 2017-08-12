@@ -3400,8 +3400,10 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv)
         for (unsigned int i = 0; i < vtxid.size(); i++) {
             CInv inv(MSG_TX, vtxid[i]);
             vInv.push_back(inv);
-            if (i == (MAX_INV_SZ - 1))
-                    break;
+            if (vInv.size() == MAX_INV_SZ) {
+                pfrom->PushMessage("inv", vInv);
+                vInv.clear();
+            }
         }
         if (vInv.size() > 0)
             pfrom->PushMessage("inv", vInv);
