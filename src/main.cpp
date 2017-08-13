@@ -1019,10 +1019,14 @@ int64_t GetProofOfWorkReward(int64_t nFees, uint256 prevHash)
     {
         nSubsidy = 10500000 * COIN;
     }
-    else if((nBestHeight > 9999) && (nBestHeight < 450000))
+    if((nBestHeight > 9999) && (nBestHeight < 450000))
     {
         if(rand1 <= 15000) // 15% Chance of superblock
         nSubsidy = 500 * COIN;
+    }
+    else if(nBestHeight >= 1000000)
+    {
+        nSubsidy = 0 * COIN;
     }
 
     if (fDebug && GetBoolArg("-printcreation"))
