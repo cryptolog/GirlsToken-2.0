@@ -1,6 +1,6 @@
 TEMPLATE = app
-TARGET = GirlsToken2.1.1.1
-VERSION = 2.1.1.1
+TARGET = GirlsToken2.1.1.3
+VERSION = 2.1.1.3
 INCLUDEPATH += src src/json src/qt
 DEFINES += QT_GUI BOOST_THREAD_USE_LIB BOOST_SPIRIT_THREADSAFE
 CONFIG += no_include_pwd
@@ -240,6 +240,7 @@ SOURCES += src/qt/bitcoin.cpp src/qt/bitcoingui.cpp \
     src/version.cpp \
     src/sync.cpp \
     src/util.cpp \
+	src/hash.cpp \
     src/netbase.cpp \
     src/key.cpp \
     src/script.cpp \
@@ -385,11 +386,11 @@ isEmpty(BOOST_INCLUDE_PATH) {
 }
 isEmpty(OPENSSL_INCLUDE_PATH) {
     macx:OPENSSL_INCLUDE_PATH = /usr/local/Cellar/openssl/1.0.2l/include/openssl
-	windows:OPENSSL_INCLUDE_PATH=C:/deps/openssl-1.0.1j/include
+	windows:OPENSSL_INCLUDE_PATH=C:/deps/openssl-1.0.1l/include
 }
 isEmpty(OPENSSL_LIB_PATH) {
     macx:OPENSSL_INCLUDE_PATH = /usr/local/Cellar/openssl/1.0.2l/lib
-	windows:OPENSSL_LIB_PATH=C:/deps/openssl-1.0.1j
+	windows:OPENSSL_LIB_PATH=C:/deps/openssl-1.0.1l
 }
 isEmpty(QRENCODE_INCLUDE_PATH) {
     macx:QRENCODE_INCLUDE_PATH = /usr/local/Cellar/qrencode/3.4.4/include

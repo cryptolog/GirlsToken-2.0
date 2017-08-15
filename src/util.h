@@ -466,6 +466,8 @@ inline uint256 Hash(const T1 pbegin, const T1 pend)
     return hash2;
 }
 
+unsigned int MurmurHash3(unsigned int nHashSeed, const std::vector<unsigned char>& vDataToHash);
+
 class CHashWriter
 {
 private:
