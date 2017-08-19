@@ -10,7 +10,6 @@ greaterThan(QT_MAJOR_VERSION, 4) {
     QT += widgets
     DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0
 }
-# My deps locations
 windows {
 	MINIUPNPC_INCLUDE_PATH=C:/deps/
 	MINIUPNPC_LIB_PATH=C:/deps/miniupnpc

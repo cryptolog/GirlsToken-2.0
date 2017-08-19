@@ -11,13 +11,13 @@ BOOST_SUFFIX?=-mgw49-mt-s-1_55
 INCLUDEPATHS= \
  -I"C:\deps\boost_1_55_0" \
  -I"C:\deps\db-4.8.30.NC\build_unix" \
- -I"C:\deps\openssl-1.0.1j\include"
+ -I"C:\deps\openssl-1.0.1l\include"
 
 LIBPATHS= \
  -L"$(CURDIR)\leveldb" \
  -L"C:\deps\boost_1_55_0\stage\lib" \
  -L"C:\deps\db-4.8.30.NC\build_unix" \
- -L"C:\deps\openssl-1.0.1j"
+ -L"C:\deps\openssl-1.0.1l"
 
 LIBS= \
  -l leveldb \
@@ -43,9 +43,9 @@ ifndef USE_UPNP
 	override USE_UPNP = -
 endif
 ifneq (${USE_UPNP}, -)
- INCLUDEPATHS += -I"C:\deps"
+ INCLUDEPATHS += -I"C:\deps\miniupnpc"
  LIBPATHS += -L"C:\deps\miniupnpc"
- LIBS += -l miniupnpc -l iphlpapi
+ LIBS += -l iphlpapi -l miniupnpc
  DEFS += -DSTATICLIB -DUSE_UPNP=$(USE_UPNP)
 endif
 
