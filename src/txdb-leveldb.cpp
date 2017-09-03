@@ -24,6 +24,7 @@ using namespace std;
 using namespace boost;
 
 leveldb::DB *txdb; // global pointer for LevelDB object instance
+static int64 nTxn = 0;
 
 static leveldb::Options GetOptions() {
     leveldb::Options options;
@@ -204,6 +205,7 @@ bool CTxDB::ReadTxIndex(uint256 hash, CTxIndex& txindex)
 
 bool CTxDB::UpdateTxIndex(uint256 hash, const CTxIndex& txindex)
 {
+	nTxn++;
     return Write(make_pair(string("tx"), hash), txindex);
 }
 
@@ -212,6 +214,7 @@ bool CTxDB::AddTxIndex(const CTransaction& tx, const CDiskTxPos& pos, int nHeigh
     // Add to tx index
     uint256 hash = tx.GetHash();
     CTxIndex txindex(pos, tx.vout.size());
+	nTxn++;
     return Write(make_pair(string("tx"), hash), txindex);
 }
 

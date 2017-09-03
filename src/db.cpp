@@ -20,7 +20,7 @@ using namespace boost;
 
 
 unsigned int nWalletDBUpdated;
-
+static int64 nTxn = 0;
 
 
 //
@@ -306,6 +306,16 @@ void CDB::Close()
     unsigned int nMinutes = 0;
     if (fReadOnly)
         nMinutes = 1;
+	if (strFile == "addr.dat")
+		nMinutes = 2;
+	if (strFile == "blkindex.dat" && IsInitialBlockDownload())
+        nMinutes = 5;
+
+    if (nMinutes == 0 || nTxn > 200000)
+    {
+        nTxn = 0;
+        nMinutes = 0;
+    }
 
     bitdb.dbenv.txn_checkpoint(nMinutes ? GetArg("-dblogsize", 100)*1024 : 0, nMinutes, 0);
 
