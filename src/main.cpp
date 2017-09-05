@@ -1022,7 +1022,11 @@ int64_t GetProofOfWorkReward(int64_t nFees, uint256 prevHash)
         if(rand1 <= 15000) // 15% Chance of superblock
         nSubsidy = 500 * COIN;
     }
-    else if(nBestHeight >= 1000000)
+	if(nBestHeight >= 600000)
+    {
+        nSubsidy = 50 * COIN;
+    }
+    else if(nBestHeight >= LAST_POW_BLOCK)
     {
         nSubsidy = 0 * COIN;
     }
@@ -2011,10 +2015,7 @@ bool CBlock::AddToBlockIndex(unsigned int nFile, unsigned int nBlockPos, const u
     if (!ComputeNextStakeModifier(pindexNew->pprev, nStakeModifier, fGeneratedStakeModifier))
         return error("AddToBlockIndex() : ComputeNextStakeModifier() failed");
     pindexNew->SetStakeModifier(nStakeModifier, fGeneratedStakeModifier);
-    pindexNew->nStakeModifierChecksum = GetStakeModifierChecksum(pindexNew);
-    if (!CheckStakeModifierCheckpoints(pindexNew->nHeight, pindexNew->nStakeModifierChecksum))
-        return error("AddToBlockIndex() : Rejected by stake modifier checkpoint height=%d, modifier=0x%016"PRIx64, pindexNew->nHeight, nStakeModifier);
-
+    
     // Add to mapBlockIndex
     map<uint256, CBlockIndex*>::iterator mi = mapBlockIndex.insert(make_pair(hash, pindexNew)).first;
     if (pindexNew->IsProofOfStake())

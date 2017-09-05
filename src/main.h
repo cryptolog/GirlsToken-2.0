@@ -27,7 +27,7 @@ class CNode;
 
 class CTxMemPool;
 
-static const int LAST_POW_BLOCK = 1000000;
+static const int LAST_POW_BLOCK = 1400000;
 
 /** The maximum allowed size for a serialized block, in bytes (network rule) */
 static const unsigned int MAX_BLOCK_SIZE = 1000000;
@@ -1145,7 +1145,6 @@ public:
         nMoneySupply = 0;
         nFlags = 0;
         nStakeModifier = 0;
-        nStakeModifierChecksum = 0;
         hashProof = 0;
         prevoutStake.SetNull();
         nStakeTime = 0;
@@ -1170,7 +1169,6 @@ public:
         nMoneySupply = 0;
         nFlags = 0;
         nStakeModifier = 0;
-        nStakeModifierChecksum = 0;
         hashProof = 0;
         if (block.IsProofOfStake())
         {
