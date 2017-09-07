@@ -1,6 +1,6 @@
 TEMPLATE = app
-TARGET = GirlsToken2.1.2
-VERSION = 2.1.2
+TARGET = GirlsToken2.2.0
+VERSION = 2.2.0
 INCLUDEPATH += src src/json src/qt
 DEFINES += QT_GUI BOOST_THREAD_USE_LIB BOOST_SPIRIT_THREADSAFE
 CONFIG += no_include_pwd
@@ -331,7 +331,7 @@ OTHER_FILES += \
 # platform specific defaults, if not overridden on command line
 isEmpty(BOOST_LIB_SUFFIX) {
     macx:BOOST_LIB_SUFFIX = -mt
-    windows:BOOST_LIB_SUFFIX=-mgw49-mt-s-1_55
+    windows:BOOST_LIB_SUFFIX=-mgw49-mt-s-1_58
 }
 
 isEmpty(BOOST_THREAD_LIB_SUFFIX) {
@@ -355,12 +355,12 @@ isEmpty(BDB_INCLUDE_PATH) {
 
 isEmpty(BOOST_LIB_PATH) {
     macx:BOOST_LIB_PATH = /usr/local/Cellar/boost@1.55/1.55.0_1/lib
-	windows:BOOST_LIB_PATH=C:/deps/boost_1_55_0/stage/lib
+	windows:BOOST_LIB_PATH=C:/deps/boost_1_58_0/stage/lib
 }
 
 isEmpty(BOOST_INCLUDE_PATH) {
     macx:BOOST_INCLUDE_PATH = /usr/local/Cellar/boost@1.55/1.55.0_1/include
-	windows:BOOST_INCLUDE_PATH=C:/deps/boost_1_55_0
+	windows:BOOST_INCLUDE_PATH=C:/deps/boost_1_58_0
 }
 isEmpty(OPENSSL_INCLUDE_PATH) {
     macx:OPENSSL_INCLUDE_PATH = /usr/local/Cellar/openssl/1.0.2l/include/openssl
@@ -398,7 +398,7 @@ macx:OBJECTIVE_SOURCES += src/qt/macdockiconhandler.mm
 macx:LIBS += -framework Foundation -framework ApplicationServices -framework AppKit
 macx:DEFINES += MAC_OSX MSG_NOSIGNAL=0
 macx:ICON = src/qt/res/icons/xgtc.icns
-macx:TARGET = GirlsToken-2.1.2
+macx:TARGET = GirlsToken-2.2.0
 macx:QMAKE_CFLAGS_THREAD += -pthread
 macx:QMAKE_LFLAGS_THREAD += -pthread
 macx:QMAKE_CXXFLAGS_THREAD += -pthread
