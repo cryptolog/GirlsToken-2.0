@@ -95,7 +95,7 @@ OBJS= \
     obj/kernel.o \
     obj/scrypt.o \
     obj/scrypt-x86.o \
-    obj/scrypt-x86_64.o
+    obj/scrypt-x86_64.o 
 
 ifndef USE_UPNP
 	override USE_UPNP = -
@@ -146,7 +146,9 @@ GirlsTokend: $(OBJS:obj/%=obj/%)
 clean:
 	-rm -f GirlsTokend
 	-rm -f obj/*.o
+	-rm -f obj/zerocoin/*.o
 	-rm -f obj/*.P
+	-rm -f obj/zerocoin/*.P
 	-rm -f obj/build.h
 
 FORCE:

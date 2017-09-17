@@ -439,12 +439,11 @@ bool CKey::SetCompactSignature(uint256 hash, const std::vector<unsigned char>& v
 
 bool CKey::Verify(uint256 hash, const std::vector<unsigned char>& vchSig)
 {
-    if (vchSig.empty())
-        return false;
-
-    // New versions of OpenSSL will reject non-canonical DER signatures. de/re-serialize first.
-    unsigned char *norm_der = NULL;
-    ECDSA_SIG *norm_sig = ECDSA_SIG_new();
+    // -1 = error, 0 = bad sig, 1 = good
+	if (vchSig.empty())
+		return false;
+	unsigned char *norm_der = NULL;
+	ECDSA_SIG *norm_sig = ECDSA_SIG_new();
     const unsigned char* sigptr = &vchSig[0];
     assert(norm_sig);
     if (d2i_ECDSA_SIG(&norm_sig, &sigptr, vchSig.size()) == NULL)
@@ -468,7 +467,6 @@ bool CKey::Verify(uint256 hash, const std::vector<unsigned char>& vchSig)
     OPENSSL_free(norm_der);
     return ret;
  }
-
 
 bool CKey::IsValid()
 {

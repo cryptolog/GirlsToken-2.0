@@ -1145,6 +1145,7 @@ public:
         nMoneySupply = 0;
         nFlags = 0;
         nStakeModifier = 0;
+        nStakeModifierChecksum = 0;
         hashProof = 0;
         prevoutStake.SetNull();
         nStakeTime = 0;
@@ -1169,6 +1170,7 @@ public:
         nMoneySupply = 0;
         nFlags = 0;
         nStakeModifier = 0;
+        nStakeModifierChecksum = 0;
         hashProof = 0;
         if (block.IsProofOfStake())
         {

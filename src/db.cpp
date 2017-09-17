@@ -306,7 +306,7 @@ void CDB::Close()
     unsigned int nMinutes = 0;
     if (fReadOnly)
         nMinutes = 1;
-	if (strFile == "addr.dat")
+		if (strFile == "addr.dat")
 		nMinutes = 2;
 	if (strFile == "blkindex.dat" && IsInitialBlockDownload())
         nMinutes = 5;

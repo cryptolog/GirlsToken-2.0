@@ -80,7 +80,7 @@ OBJS= \
     obj/pbkdf2.o \
     obj/scrypt.o \
     obj/scrypt-x86.o \
-    obj/scrypt-x86_64.o
+    obj/scrypt-x86_64.o 
 
 all: GirlsTokend.exe
 
@@ -112,6 +112,7 @@ obj/scrypt-x86_64.o: scrypt-x86_64.S
 
 clean:
 	-rm -f obj/*.o
+	-rm -f obj/zerocoin/*.o
 	-rm -f GirlsTokend.exe
 	-rm -f obj/build.h
 	cd leveldb && TARGET_OS=OS_WINDOWS_CROSSCOMPILE $(MAKE) clean && cd ..

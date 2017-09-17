@@ -25,7 +25,6 @@ using namespace boost;
 
 leveldb::DB *txdb; // global pointer for LevelDB object instance
 static int64 nTxn = 0;
-
 static leveldb::Options GetOptions() {
     leveldb::Options options;
     int nCacheSizeMB = GetArg("-dbcache", 25);
@@ -205,8 +204,8 @@ bool CTxDB::ReadTxIndex(uint256 hash, CTxIndex& txindex)
 
 bool CTxDB::UpdateTxIndex(uint256 hash, const CTxIndex& txindex)
 {
-	nTxn++;
     return Write(make_pair(string("tx"), hash), txindex);
+	nTxn++;
 }
 
 bool CTxDB::AddTxIndex(const CTransaction& tx, const CDiskTxPos& pos, int nHeight)
@@ -214,8 +213,8 @@ bool CTxDB::AddTxIndex(const CTransaction& tx, const CDiskTxPos& pos, int nHeigh
     // Add to tx index
     uint256 hash = tx.GetHash();
     CTxIndex txindex(pos, tx.vout.size());
-	nTxn++;
     return Write(make_pair(string("tx"), hash), txindex);
+	nTxn++;
 }
 
 bool CTxDB::EraseTxIndex(const CTransaction& tx)
@@ -407,7 +406,7 @@ bool CTxDB::LoadBlockIndex()
         CBlockIndex* pindex = item.second;
         pindex->nChainTrust = (pindex->pprev ? pindex->pprev->nChainTrust : 0) + pindex->GetBlockTrust();
         // NovaCoin: calculate stake modifier checksum
-       // pindex->nStakeModifierChecksum = GetStakeModifierChecksum(pindex);
+        pindex->nStakeModifierChecksum = GetStakeModifierChecksum(pindex);
      //   if (!CheckStakeModifierCheckpoints(pindex->nHeight, pindex->nStakeModifierChecksum))
       //      return error("CTxDB::LoadBlockIndex() : Failed stake modifier checkpoint height=%d, modifier=0x%016"PRIx64, pindex->nHeight, pindex->nStakeModifier);
     }
