@@ -1,8 +1,8 @@
 TEMPLATE = app
-TARGET = GirlsToken2.2.1
-VERSION = 2.2.1.0
+TARGET = GirlsToken2.2.2
+VERSION = 2.2.2.0
 INCLUDEPATH += src src/json src/qt
-DEFINES += QT_GUI BOOST_THREAD_USE_LIB BOOST_SPIRIT_THREADSAFE
+DEFINES += QT_GUI BOOST_THREAD_USE_LIB BOOST_SPIRIT_THREADSAFE __NO_SYSTEM_INCLUDES
 CONFIG += no_include_pwd
 CONFIG += thread static
 
@@ -331,7 +331,7 @@ OTHER_FILES += \
 # platform specific defaults, if not overridden on command line
 isEmpty(BOOST_LIB_SUFFIX) {
     macx:BOOST_LIB_SUFFIX = -mt
-    windows:BOOST_LIB_SUFFIX=-mgw49-mt-s-1_55
+    windows:BOOST_LIB_SUFFIX=-mgw49-mt-s-1_58
 }
 
 isEmpty(BOOST_THREAD_LIB_SUFFIX) {
@@ -355,12 +355,12 @@ isEmpty(BDB_INCLUDE_PATH) {
 
 isEmpty(BOOST_LIB_PATH) {
     macx:BOOST_LIB_PATH = /usr/local/Cellar/boost@1.55/1.55.0_1/lib
-	windows:BOOST_LIB_PATH=C:/deps/boost_1_55_0/stage/lib
+	windows:BOOST_LIB_PATH=C:/deps/boost_1_58_0/stage/lib
 }
 
 isEmpty(BOOST_INCLUDE_PATH) {
     macx:BOOST_INCLUDE_PATH = /usr/local/Cellar/boost@1.55/1.55.0_1/include
-	windows:BOOST_INCLUDE_PATH=C:/deps/boost_1_55_0
+	windows:BOOST_INCLUDE_PATH=C:/deps/boost_1_58_0
 }
 isEmpty(OPENSSL_INCLUDE_PATH) {
     macx:OPENSSL_INCLUDE_PATH = /usr/local/Cellar/openssl/1.0.2l/include/openssl
