@@ -379,10 +379,12 @@ Value getblocktemplate(const Array& params, bool fHelp)
     if (strMode == "template")
     {
         if (vNodes.empty())
-            throw JSONRPCError(-9, "Blackcoin is not connected!");
+            throw JSONRPCError(-9, "GirlsToken is not connected!");
 
         if (IsInitialBlockDownload())
-            throw JSONRPCError(-10, "Blackcoin is downloading blocks...");
+            throw JSONRPCError(-10, "GirlsToken is downloading blocks...");
+        if (pindexBest->nHeight >= LAST_POW_BLOCK)
+            throw JSONRPCError(RPC_MISC_ERROR, "No more PoW blocks");
 
         static CReserveKey reservekey(pwalletMain);
 
