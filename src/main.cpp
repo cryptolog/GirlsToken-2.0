@@ -1027,9 +1027,9 @@ int64_t GetProofOfWorkReward(int64_t nFees, uint256 prevHash)
     {
         nSubsidy = 50 * COIN;
     }
-    else if(nBestHeight >= LAST_POW_BLOCK)
-	{
-        nSubsidy = 0 * COIN;
+    else if(nBestHeight >= 1400000)
+    {
+        nSubsidy = 10 * COIN; //Extended POW to due to mostly solo mining up till now
     }
 
     if (fDebug && GetBoolArg("-printcreation"))
