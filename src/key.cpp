@@ -437,36 +437,28 @@ bool CKey::SetCompactSignature(uint256 hash, const std::vector<unsigned char>& v
     return false;
 }
 
-bool CKey::Verify(uint256 hash, const std::vector<unsigned char>& vchSig)
-{
-    // -1 = error, 0 = bad sig, 1 = good
-	if (vchSig.empty())
-		return false;
-	unsigned char *norm_der = NULL;
-	ECDSA_SIG *norm_sig = ECDSA_SIG_new();
+bool CKey::Verify(uint256 hash, const std::vector<unsigned char> &vchSig) {
+
+    if(vchSig.empty()) return(false);
+
+    /* Decode and re-encode signatures to work around new OpenSSL versions */
+    unsigned char *norm_der = NULL;
+    ECDSA_SIG *norm_sig = ECDSA_SIG_new();
     const unsigned char* sigptr = &vchSig[0];
-    assert(norm_sig);
-    if (d2i_ECDSA_SIG(&norm_sig, &sigptr, vchSig.size()) == NULL)
-    {
-        /* As of OpenSSL 1.0.0p d2i_ECDSA_SIG frees and nulls the pointer on
-         * error. But OpenSSL's own use of this function redundantly frees the
-         * result. As ECDSA_SIG_free(NULL) is a no-op, and in the absence of a
-         * clear contract for the function behaving the same way is more
-         * conservative.
-         */
+    if(d2i_ECDSA_SIG(&norm_sig, &sigptr, vchSig.size()) == NULL) {
         ECDSA_SIG_free(norm_sig);
-        return false;
+        return(false);
     }
     int derlen = i2d_ECDSA_SIG(norm_sig, &norm_der);
     ECDSA_SIG_free(norm_sig);
-    if (derlen <= 0)
-        return false;
+    if(derlen <= 0) return(false);
 
-    // -1 = error, 0 = bad sig, 1 = good
-    bool ret = ECDSA_verify(0, (unsigned char*)&hash, sizeof(hash), norm_der, derlen, pkey) == 1;
+    /* -1 = error, 0 = bad sig, 1 = good */
+    int ret = ECDSA_verify(0, (unsigned char *) &hash, sizeof(hash), norm_der, derlen, pkey);
     OPENSSL_free(norm_der);
-    return ret;
- }
+    if(ret != 1) return(false);
+    return(true);
+}
 
 bool CKey::IsValid()
 {

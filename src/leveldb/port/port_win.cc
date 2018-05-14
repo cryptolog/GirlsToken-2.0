@@ -29,9 +29,8 @@
 //
 
 #include "port/port_win.h"
-#include <winsock2.h>
-#include <windows.h>
 
+#include <windows.h>
 #include <cassert>
 
 namespace leveldb {
