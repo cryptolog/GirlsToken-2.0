@@ -1,6 +1,6 @@
 TEMPLATE = app
-TARGET = GirlsToken2.2.1
-VERSION = 2.2.1.0
+TARGET = GirlsToken2.3.0
+VERSION = 2.3.0.0
 INCLUDEPATH += src src/json src/qt
 DEFINES += QT_GUI BOOST_THREAD_USE_LIB BOOST_SPIRIT_THREADSAFE
 CONFIG += no_include_pwd
